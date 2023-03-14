@@ -4,3 +4,5 @@
 [submodule "vrs"]
 	path = csrc/vrs
 	url = https://github.com/moverseai/vrs
+[submodule "csrc/vrs/"]
+	url = https://github.com/moverseai/vrs

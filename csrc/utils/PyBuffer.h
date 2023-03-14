@@ -15,6 +15,14 @@
  */
 
 #pragma once
+
+#ifdef _MSC_VER
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+#else
+#include <unistd.h>
+#endif 
+
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
 
