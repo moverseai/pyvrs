@@ -77,6 +77,7 @@ class CMakeBuild(build_ext):
         cmake_args = [
             f"-DCMAKE_BUILD_TYPE={cfg}",
             f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={extdir}",
+            r"-DCMAKE_TOOLCHAIN_FILE=..\vcpkg\scripts\buildsystems\vcpkg.cmake",
             f"-DPYTHON_EXECUTABLE={sys.executable}",
             "-GCodeBlocks",
         ]
