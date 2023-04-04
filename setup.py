@@ -74,11 +74,15 @@ class CMakeBuild(build_ext):
         else:
             cfg = "Debug" if self.debug else "Release"
 
+        #moverse stuff
+        vcpkg_path = os.path.join(Path(__file__).parent.parent, "vcpkg","scripts", "buildsystems", "vcpkg.cmake" )
+
         cmake_args = [
             f"-DCMAKE_BUILD_TYPE={cfg}",
             f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={extdir}",
             # r"-DCMAKE_TOOLCHAIN_FILE=..\vcpkg\scripts\buildsystems\vcpkg.cmake",
-            r"-DCMAKE_TOOLCHAIN_FILE=C:\Users\vlad\code\vcpkg_vrs_player\scripts\buildsystems\vcpkg.cmake",
+            # r"-DCMAKE_TOOLCHAIN_FILE=C:\Users\vlad\code\vcpkg_vrs_player\scripts\buildsystems\vcpkg.cmake",
+            f"-DCMAKE_TOOLCHAIN_FILE={vcpkg_path}",
             f"-DPYTHON_EXECUTABLE={sys.executable}",
             "-GCodeBlocks",
         ]
