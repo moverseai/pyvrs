@@ -28,6 +28,8 @@ project(vrsbindings
   DESCRIPTION "Meta VRS File Format Project"
   LANGUAGES CXX
 )
+option(USE_CXX_EXCEPTIONS "Enable C++ exception support" ON)
+
 message(STATUS "CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
 message(STATUS "CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
 
