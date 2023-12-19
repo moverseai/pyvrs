@@ -3,3 +3,4 @@ CMakeLists.txt.user
 build/
 *egg-info*
 __pycache__/
+*.pyd

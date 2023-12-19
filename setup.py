@@ -14,6 +14,7 @@
 # limitations under the License.
 
 import os
+# import platform
 import subprocess
 import sys
 from pathlib import Path
@@ -22,7 +23,6 @@ from setuptools import Extension, find_packages, setup
 from setuptools.command.build_ext import build_ext
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-
 
 def _get_sha():
     sha = "Unknown"
@@ -48,6 +48,8 @@ def get_version():
 
     return version
 
+# def is_windows():
+#     return 'windows' in platform.system().lower()
 
 class CMakeExtension(Extension):
     def __init__(self, name, sourcedir=""):
@@ -75,7 +77,11 @@ class CMakeBuild(build_ext):
             cfg = "Debug" if self.debug else "Release"
 
         #moverse stuff
-        vcpkg_path = os.path.join(Path(__file__).parent.parent, "vcpkg","scripts", "buildsystems", "vcpkg.cmake" )
+        VCPKG_ENV_VAR = 'VCPKG_ROOT'
+        if VCPKG_ENV_VAR in os.environ:
+            vcpkg_path = os.path.join(os.environ[VCPKG_ENV_VAR], "scripts", "buildsystems", "vcpkg.cmake")
+        else:
+            vcpkg_path = os.path.join(Path(__file__).parent.parent, "vcpkg", "scripts", "buildsystems", "vcpkg.cmake")
 
         cmake_args = [
             f"-DCMAKE_BUILD_TYPE={cfg}",
@@ -85,8 +91,15 @@ class CMakeBuild(build_ext):
             f"-DCMAKE_TOOLCHAIN_FILE={vcpkg_path}",
             f"-DPYTHON_EXECUTABLE={sys.executable}",
             "-GCodeBlocks",
+            '-DVCPKG_TARGET_TRIPLET=x64-windows-vc142',
         ]
         build_args = ["--target", os.path.basename(ext.name)]
+
+        # if is_windows():
+        #     cmake_args += [
+        #         '-DBOOST_DATE_TIME_NO_LIB=1',
+        #         '-DBOOST_REGEX_NO_LIB=1'
+        #     ]
 
         # Default to Ninja
         if "CMAKE_GENERATOR" not in os.environ:

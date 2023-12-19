@@ -1,20 +1,50 @@
 {
     "name": "vrs",
-    "version-string": "0.1.0",
+    "version-string": "0.2.0",
+    "vcpkg-configuration": {             
+        "overlay-triplets": [ "./triplets" ]      
+    },
     "dependencies": [
-      "boost-filesystem",
-      "boost-chrono",
-      "boost-date-time",
-      "boost-thread",
-      "boost-uuid",
-      "boost-process",
-      "boost-interprocess",
+      {
+        "name": "boost-filesystem",
+        "host": true
+      },
+      {
+        "name": "boost-chrono",
+        "host": true
+      },
+      {
+        "name": "boost-date-time",
+        "host": true
+      },
+      {
+        "name": "boost-thread",
+        "host": true
+      },
+      {
+        "name": "boost-uuid",
+        "host": true
+      },
+      {
+        "name": "boost-process",
+        "host": true
+      },
+      {
+        "name": "boost-interprocess",
+        "host": true
+      },
       "fmt",
       "cereal",
       "libpng",
-      "libjpeg-turbo",
-      "lz4",
-      "xxhash",
+      "libjpeg-turbo",      
+      {
+        "name": "lz4",
+        "host": true
+      },
+      {
+        "name": "xxhash",
+        "host": true
+      },
       "glog",
       "zstd",
       "gtest",
