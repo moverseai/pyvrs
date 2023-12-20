@@ -14,7 +14,6 @@
 # limitations under the License.
 
 import os
-# import platform
 import subprocess
 import sys
 from pathlib import Path
@@ -47,9 +46,6 @@ def get_version():
             version += "+" + sha[:7]
 
     return version
-
-# def is_windows():
-#     return 'windows' in platform.system().lower()
 
 class CMakeExtension(Extension):
     def __init__(self, name, sourcedir=""):
@@ -91,15 +87,13 @@ class CMakeBuild(build_ext):
             f"-DCMAKE_TOOLCHAIN_FILE={vcpkg_path}",
             f"-DPYTHON_EXECUTABLE={sys.executable}",
             "-GCodeBlocks",
-            '-DVCPKG_TARGET_TRIPLET=x64-windows-vc142',
+            # '-DVCPKG_TARGET_TRIPLET=x64-windows-vc142',
         ]
         build_args = ["--target", os.path.basename(ext.name)]
 
-        # if is_windows():
-        #     cmake_args += [
-        #         '-DBOOST_DATE_TIME_NO_LIB=1',
-        #         '-DBOOST_REGEX_NO_LIB=1'
-        #     ]
+        VCPKG_TRIPLET_ENV_VAR = 'VCPKG_TRIPLET'
+        if VCPKG_TRIPLET_ENV_VAR in os.environ:
+            cmake_args += [f'-DVCPKG_TARGET_TRIPLET={os.environ[VCPKG_TRIPLET_ENV_VAR]}']
 
         # Default to Ninja
         if "CMAKE_GENERATOR" not in os.environ:

@@ -1,54 +1,48 @@
 {
-    "name": "vrs",
-    "version-string": "0.2.0",
-    "vcpkg-configuration": {             
-        "overlay-triplets": [ "./triplets" ]      
-    },
-    "dependencies": [
-      {
-        "name": "boost-filesystem",
-        "host": true
-      },
-      {
-        "name": "boost-chrono",
-        "host": true
-      },
-      {
-        "name": "boost-date-time",
-        "host": true
-      },
-      {
-        "name": "boost-thread",
-        "host": true
-      },
-      {
-        "name": "boost-uuid",
-        "host": true
-      },
-      {
-        "name": "boost-process",
-        "host": true
-      },
-      {
-        "name": "boost-interprocess",
-        "host": true
-      },
-      "fmt",
-      "cereal",
-      "libpng",
-      "libjpeg-turbo",      
-      {
-        "name": "lz4",
-        "host": true
-      },
-      {
-        "name": "xxhash",
-        "host": true
-      },
-      "glog",
-      "zstd",
-      "gtest",
-      "portaudio",
-      "qt5-base"
+  "name": "vrs",
+  "version-string": "0.2.0",
+  "vcpkg-configuration": {
+    "overlay-triplets": [
+      "./triplets"
     ]
-  }
+  },
+  "dependencies": [
+    {
+      "name": "boost-filesystem"
+    },
+    {
+      "name": "boost-chrono"
+    },
+    {
+      "name": "boost-date-time"
+    },
+    {
+      "name": "boost-thread"
+    },
+    {
+      "name": "boost-uuid"
+    },
+    {
+      "name": "boost-process"
+    },
+    {
+      "name": "boost-interprocess"
+    },
+    "fmt",
+    "cereal",
+    "libpng",
+    "libjpeg-turbo",
+    {
+      "name": "lz4"
+    },
+    {
+      "name": "xxhash"
+    },
+    "glog",
+    "zstd",
+    "gtest",
+    "portaudio",
+    "qt5-base"
+  ],
+  "builtin-baseline": "22cdcd5e7d7c2d7b50a88c06e90bab74f043075f"
+}
