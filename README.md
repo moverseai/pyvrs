@@ -30,8 +30,9 @@ python -m pip install -e .
 ## Using `vcpkg`
 1. Open a Developer Command Prompt for VS 2019/2022 at the root of this repository.
 2. (optional) Set the `VCPKG_ROOT` environmental variable using `set VCPKG_ROOT={PATH_TO_VCPKG_ROOT}`. _This is necessary when `vcpkg` is not at `../vcpkg`._
-3. (optional) Add a `vcpkg` baseline using `VCPKG_ROOT/vcpkg.exe x-update-baseline --add-initial-baseline`.  
-4. `pip install .` (using editable mode `-e` results in dislocated package & dlls, meaning we need to copy the `*.dll` from the build directory to the root path where the `*.pyd` is located)
+3. (optional) Set the `VCPKG_TRIPLET` environmental variable using `set VCPKG_TRIPLET=x64-windows-vc142`. _This is necessary when the default triplet does not compile._
+4. (optional) Add a `vcpkg` baseline using `VCPKG_ROOT/vcpkg.exe x-update-baseline --add-initial-baseline`.  
+5. `pip install .` (using editable mode `-e` results in dislocated package & dlls, meaning we need to copy the `*.dll` from the build directory to the root path where the `*.pyd` is located)
 
 # Contributing
 
